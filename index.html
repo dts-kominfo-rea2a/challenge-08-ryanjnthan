@@ -40,19 +40,12 @@
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
-        const tombolHandler = toDoItem.key;
-        let li = document.createElement('li');
-        li.innerHTML = input.value;
-
-        if (toDoItem.which === 1){
-          output.append(li);
+          let li = document.createElement('li');
+          li.innerHTML = input.value;
+          output.appendChild(li);
           input.value = "";
           input.focus();
-        } else if (tombolHandler === "Enter"){ 
-          output.append(li);
-          input.value = "";
-          input.focus();
-        }
+        
       }
 
       // TODO: register event onclick / addEventListener untuk button
@@ -61,7 +54,9 @@
       
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
-      input.addEventListener("keypress", fnClickHandler);
+      input.addEventListener("keypress", (ev)=> {
+        if(ev.key === "Enter") fnClickHandler();
+      });
     </script>
   </body>
 </html>
